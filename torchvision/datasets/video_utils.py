@@ -365,7 +365,8 @@ class VideoClips:
                 resampling_idx = resampling_idx - resampling_idx[0]
             video = video[resampling_idx]
             info["video_fps"] = self.frame_rate
-        assert len(video) == self.num_frames, f"{video.shape} x {self.num_frames}"
+        # assert len(video) == self.num_frames, f"{video.shape} x {self.num_frames}"
+        video = video[:self.num_frames]
 
         if self.output_format == "TCHW":
             # [T,H,W,C] --> [T,C,H,W]
